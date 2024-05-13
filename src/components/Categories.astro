@@ -1,0 +1,29 @@
+---
+import Grid from "./logo/Grid.astro";
+import Rows from "./logo/Rows.astro";
+---
+
+<ul>
+  <li><Grid/></li>
+  <li><Rows/></li>
+  <li>JavaScript</li>
+  <li>DevOps</li>
+  <li>Cloud</li>
+  <li>Terraform</li>
+  <li>Architecture</li>
+  <li>Scalabolity</li>
+  <li>Explainers</li>
+</ul>
+<style>
+  ul{
+    list-style: none;
+    display: flex;
+    flex: row;
+    justify-content: center;    
+    gap: 20px;
+    font-family: "Recursive", sans-serif;
+    color: var(--category-color);
+    font-style: italic;
+    font-size: 1.1em;
+  }
+</style>

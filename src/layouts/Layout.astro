@@ -19,9 +19,10 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Poppins"
 			rel="stylesheet"
 		/>
+		<link href="https://fonts.googleapis.com/css2?family=Recursive" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -32,10 +33,14 @@ const { title } = Astro.props;
 <style is:global>
 	:root {
 		--white-color: #ffffff;
-		--redish-color: #FF7575;
+		--title-color: #FF7575;
+		--category-color: #909090;
+		--background-color: #232830;
+		--card-text-color: #0F1217;
 	}
 	html {
 		font-family: "Poppins", sans-serif;
-		background: #232830;
+		background: var(--background-color);
+		color-scheme: dark;
 	}
 </style>

@@ -2,14 +2,24 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Header from '../components/Header.astro';
+import Filter from '../components/Categories.astro';
 ---
 
 <Layout title="Writing for Developers">
-	<main>
+	<main class="main">
 		<Header/>
+		<hr>
+		<Filter/>
+		<Card/>
 	</main>
 </Layout>
 
 <style>
-	
+	.main{
+		margin: 0 auto;
+		max-width: 1200px;
+	}
+	hr{
+		border-color: #4D4D4D;
+	}
 </style>
