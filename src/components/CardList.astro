@@ -1,0 +1,62 @@
+---
+import Card from "./Card.astro";
+---
+
+<section>
+  <div class="wrapper">
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+  </div>
+  <nav class="pagination-container">
+    <button
+      class="pagination-button"
+      id="prev-button"
+      title="Previous"
+      aria-label="Previous"
+    >
+      Previous
+    </button>
+    <div id="pagination-numbers"></div>
+    <button
+      class="pagination-button"
+      id="next-button"
+      title="Next"
+      aria-label="Next"
+    >
+      Next
+    </button>
+  </nav>
+</section>
+<style>
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+  .pagination-number,
+  .pagination-button {
+    font-size: 1.1rem;
+    font-family: "Recursive", sans-serif;
+    font-style: italic;
+    background-color: transparent;
+    color: var(--category-color);
+    border: none;
+    cursor: pointer;
+  }
+  section {
+    margin: 100px 0;
+  }
+</style>

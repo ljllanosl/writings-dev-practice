@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Header from '../components/Header.astro';
 import Filter from '../components/Categories.astro';
+import CardList from '../components/CardList.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Writing for Developers">
@@ -10,7 +12,9 @@ import Filter from '../components/Categories.astro';
 		<Header/>
 		<hr>
 		<Filter/>
-		<Card/>
+		<CardList/>
+		<hr>
+		<Footer/>		
 	</main>
 </Layout>
 
@@ -20,6 +24,6 @@ import Filter from '../components/Categories.astro';
 		max-width: 1200px;
 	}
 	hr{
-		border-color: #4D4D4D;
+		border-color: var(--hr-color);
 	}
 </style>

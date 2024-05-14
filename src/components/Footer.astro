@@ -1,0 +1,44 @@
+---
+import Twitter from "../components/logo/Twitter.astro"
+---
+<footer>
+  <div class="footer-left">
+    <a href="#"><h3>writings.dev</h3></a>
+    <a href="https://twitter.com/kamrify" target="_blank" class="twitter-link"> by @kamrify </a>
+  </div>
+  <div class="footer-right">
+    <a href="https://twitter.com/writingsdev"  target="_blank" class="twitter-link"><Twitter/> Follow @writingsdev </a>
+  </div>
+</footer>
+<style>
+  .twitter-link {
+    border-radius: 5px;
+    background-color: var(--twitter-color);
+    color: var(--white-color);
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+  footer a{
+    text-decoration: none;
+  }
+  footer a:visited{
+    color: var(--white-color);
+  }
+  .footer-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+  }
+  .footer-right a{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
