@@ -1,29 +1,26 @@
 ---
+export interface Props{
+  title: string;
+  description: string;
+  category: string;
+  imageUrl: string;
+  imageAlt: string;
+}
+
+const {title,description,category,imageUrl,imageAlt} = Astro.props;
 
 ---
 
-<div class="card">
-  <img src="https://picsum.photos/1280/720" alt="random image" />
-  <h4>Build continuous integration pipelines with GitHub Actions</h4>
+<img src={imageUrl} alt={imageAlt} />
+  <h4>{title}</h4>
   <p>
-    GitHub actions provide a really powerful way to integrate continuous
-    integration and delivery into your applications.
+    {description}
   </p>
   <div class="card-footer">
     <p>May 13, 2024</p>
-    <p>DevOps</p>
+    <p>{category}</p>
   </div>
-</div>
-<style>
-  .card {
-    background-color: var(--white-color);
-    width: 390px;
-    height: 439px;
-    border-radius: 15px;
-    color: var(--card-text-color);
-    padding: 20px;
-    box-sizing: border-box;
-  }
+<style>    
   img {
     border-radius: 15px;
     margin: 0 auto;
