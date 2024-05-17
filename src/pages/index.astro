@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Header from '../components/Header.astro';
-import Filter from '../components/Categories.astro';
+import Categories from '../components/Categories.astro';
 import CardList from '../components/CardList.astro';
 import Footer from '../components/Footer.astro';
 ---
@@ -11,7 +11,7 @@ import Footer from '../components/Footer.astro';
 	<main class="main">
 		<Header/>
 		<hr>
-		<Filter/>
+		<Categories/>
 		<CardList/>
 		<hr>
 		<Footer/>		
@@ -19,10 +19,6 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-	.main{
-		margin: 0 auto;
-		max-width: 1400px;
-	}
 	hr{
 		border-color: var(--hr-color);
 	}

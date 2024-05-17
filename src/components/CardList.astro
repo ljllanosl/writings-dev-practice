@@ -3,13 +3,25 @@ import Card from "./Card.astro";
 import cardData from "../data/cards.json";
 ---
 
+<script>
+  const paginationNumbers = document.getElementById("pagination-numbers");
+  const paginatedList = document.getElementById("wrapper");
+  const listItems = paginatedList?.querySelectorAll(".card");
+  const nextButton = document.getElementById("next-button");
+  const prevButton = document.getElementById("prev-button");
+
+  const paginationLimit = 9;
+  const pageCount = Math.ceil((listItems?.length || 9) / paginationLimit);
+  let currentPage;
+  console.log(pageCount);
+</script>
 <section>
-  <div class="wrapper">
+  <div id="wrapper" aria-live="polite">
     {
       cardData.map((card) => {
-        return(
+        return (
           <div class="card">
-            <Card 
+            <Card
               title={card.title}
               description={card.description}
               category={card.category}
@@ -17,8 +29,8 @@ import cardData from "../data/cards.json";
               imageAlt={card.imageAlt}
             />
           </div>
-        )
-    })
+        );
+      })
     }
   </div>
   <nav class="pagination-container">
@@ -51,16 +63,16 @@ import cardData from "../data/cards.json";
     padding: 20px;
     box-sizing: border-box;
   }
-  .wrapper {
+  #wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 30px;
     margin: 0 auto;
   }
-  .wrapper::after{
+  #wrapper::after {
     content: "";
     width: 390px;
   }
@@ -72,7 +84,7 @@ import cardData from "../data/cards.json";
   }
   .pagination-number,
   .pagination-button {
-    font-size: 1.1rem;
+    font-size: 1.2em;
     font-family: "Recursive", sans-serif;
     font-style: italic;
     background-color: transparent;
@@ -81,6 +93,7 @@ import cardData from "../data/cards.json";
     cursor: pointer;
   }
   section {
-    margin: 100px 0;
+    margin: 100px auto;
+    max-width: 1230px;
   }
 </style>
