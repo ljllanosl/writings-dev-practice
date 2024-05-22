@@ -4,16 +4,73 @@ import cardData from "../data/cards.json";
 ---
 
 <script>
+  // Elementos del DOM
   const paginationNumbers = document.getElementById("pagination-numbers");
   const paginatedList = document.getElementById("wrapper");
   const listItems = paginatedList?.querySelectorAll(".card");
   const nextButton = document.getElementById("next-button");
   const prevButton = document.getElementById("prev-button");
-
+  // Variables globales
   const paginationLimit = 9;
   const pageCount = Math.ceil((listItems?.length || 9) / paginationLimit);
-  let currentPage;
-  console.log(pageCount);
+  let currentPage:number;
+  // Añadir numeros de pagina
+  const appendPageNumber = (index: number) => {
+    const pageNumber = document.createElement("button");
+    pageNumber.className = "pagination-number";
+    pageNumber.innerHTML = index.toString();
+    pageNumber.setAttribute("page-index", index.toString());
+    pageNumber.setAttribute("aria-label", "Page " + index);
+    paginationNumbers?.appendChild(pageNumber);
+  };
+
+  const getPaginationNumbers = () => {
+    for (let i = 1; i <= pageCount; i++) {
+      appendPageNumber(i);
+    }
+  };
+  // Cargar funcion
+  window.addEventListener("load", () => {
+    getPaginationNumbers();
+    setCurrentPage(1);
+    // Asignar paginas a botones
+    document.querySelectorAll(".pagination-number").forEach((button) => {
+      const pageIndex = Number(button.getAttribute("page-index"));
+
+      if (pageIndex) {
+        button.addEventListener("click", () => {
+          setCurrentPage(pageIndex);
+        });
+      }
+    });
+  });
+  // Mostrar pagina activa
+  const setCurrentPage = (pageNum: number) => {
+    currentPage = pageNum;
+
+    handleActivePageNumber();
+
+    const prevRange = (pageNum - 1) * paginationLimit;
+    const currRange = pageNum * paginationLimit;
+
+    listItems?.forEach((item, index) => {
+      item.classList.add("hidden");
+      if (index >= prevRange && index < currRange) {
+        item.classList.remove("hidden");
+      }
+    });
+  };
+  // Asignar pagina activa
+  const handleActivePageNumber = () => {
+    document.querySelectorAll(".pagination-number").forEach((button) => {
+      button.classList.remove("active");
+
+      const pageIndex = Number(button.getAttribute("page-index"));
+      if(pageIndex == currentPage){
+        button.classList.add("active");
+      }
+    })
+  }
 </script>
 <section>
   <div id="wrapper" aria-live="polite">
@@ -82,7 +139,7 @@ import cardData from "../data/cards.json";
     justify-content: center;
     margin-top: 100px;
   }
-  .pagination-number,
+  :global(.pagination-number),
   .pagination-button {
     font-size: 1.2em;
     font-family: "Recursive", sans-serif;
@@ -91,9 +148,24 @@ import cardData from "../data/cards.json";
     color: var(--category-color);
     border: none;
     cursor: pointer;
+    padding: 15px 10px;
+    margin: 0 10px;
+    text-align: left;
+  }
+  :global(.pagination-number:hover),
+  :global(.pagination-number:not(.disabled):hover),
+  .pagination-button:hover {
+    color: var(--title-color);
+  }
+  :global(.pagination-number.active) {
+    color: var(--title-color);
+    border-top: 2px solid var(--title-color);
   }
   section {
     margin: 100px auto;
     max-width: 1230px;
+  }
+  .hidden {
+    display: none;
   }
 </style>
