@@ -1,25 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Header from '../components/Header.astro';
-import Categories from '../components/Categories.astro';
-import CardList from '../components/CardList.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
+import Categories from "../components/Categories.astro";
+import CardList from "../components/CardList.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Writing for Developers">
+	<Header />
+	<hr />
 	<main class="main">
-		<Header/>
-		<hr>
-		<Categories/>
-		<CardList/>
-		<hr>
-		<Footer/>		
+		<Categories />
+		<CardList />
 	</main>
+	<hr />
+	<Footer />
 </Layout>
 
 <style>
-	hr{
+	hr {
 		border-color: var(--hr-color);
 	}
 </style>

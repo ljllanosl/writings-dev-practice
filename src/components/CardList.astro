@@ -68,7 +68,7 @@ import cardData from "../data/cards.json";
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 75px;
   }
   :global(.pagination-number),
   .pagination-button {
@@ -84,13 +84,16 @@ import cardData from "../data/cards.json";
     text-align: left;
   }
   :global(.pagination-number:hover),
-  :global(.pagination-number:not(.disabled):hover),
-  .pagination-button:hover {
+  .pagination-button:not(.disabled):hover{
     color: var(--title-color);
   }
   :global(.pagination-number.active) {
     color: var(--title-color);
     border-top: 2px solid var(--title-color);
+  }
+  .pagination-button.disabled{
+    color: var(--hr-color);
+    cursor: unset;
   }
   section {
     margin: 100px auto;

@@ -2,8 +2,8 @@
 const paginationNumbers = document.getElementById("pagination-numbers");
 const paginatedList = document.getElementById("wrapper");
 const listItems = paginatedList?.querySelectorAll(".card");
-const nextButton = document.getElementById("next-button");
-const prevButton = document.getElementById("prev-button");
+const nextButton: HTMLElement = document.getElementById("next-button")!;
+const prevButton: HTMLElement = document.getElementById("prev-button")!;
 // Variables globales
 const paginationLimit = 9;
 const pageCount = Math.ceil((listItems?.length || 9) / paginationLimit);
@@ -23,37 +23,6 @@ const getPaginationNumbers = () => {
     appendPageNumber(i);
   }
 };
-// Cargar funcion
-window.addEventListener("load", () => {
-  getPaginationNumbers();
-  setCurrentPage(1);
-  // Asignar paginas a botones
-  document.querySelectorAll(".pagination-number").forEach((button) => {
-    const pageIndex = Number(button.getAttribute("page-index"));
-
-    if (pageIndex) {
-      button.addEventListener("click", () => {
-        setCurrentPage(pageIndex);
-      });
-    }
-  });
-});
-// Mostrar pagina activa
-const setCurrentPage = (pageNum: number) => {
-  currentPage = pageNum;
-
-  handleActivePageNumber();
-
-  const prevRange = (pageNum - 1) * paginationLimit;
-  const currRange = pageNum * paginationLimit;
-
-  listItems?.forEach((item, index) => {
-    item.classList.add("hidden");
-    if (index >= prevRange && index < currRange) {
-      item.classList.remove("hidden");
-    }
-  });
-};
 // Asignar pagina activa
 const handleActivePageNumber = () => {
   document.querySelectorAll(".pagination-number").forEach((button) => {
@@ -65,3 +34,67 @@ const handleActivePageNumber = () => {
     }
   })
 }
+// Deshabilitar botones
+const disableButton = (button: HTMLElement) => {
+  button.classList.add("disabled");
+  button.setAttribute("disabled", "true");
+}
+
+const enableButton = (button: HTMLElement) => {
+  button.classList.remove("disabled");
+  button.removeAttribute("disabled");
+}
+
+const handlePageButtonStatus = () => {
+  if (currentPage === 1) {
+    disableButton(prevButton);
+  } else {
+    enableButton(prevButton);
+  }
+
+  if (pageCount === currentPage) {
+    disableButton(nextButton);
+  } else {
+    enableButton(nextButton);
+  }
+}
+
+// Mostrar pagina activa
+const setCurrentPage = (pageNum: number) => {
+  currentPage = pageNum;
+
+  handleActivePageNumber();
+  handlePageButtonStatus();
+
+  const prevRange = (pageNum - 1) * paginationLimit;
+  const currRange = pageNum * paginationLimit;
+
+  listItems?.forEach((item, index) => {
+    item.classList.add("hidden");
+    if (index >= prevRange && index < currRange) {
+      item.classList.remove("hidden");
+    }
+  });
+};
+// Cargar funcion
+window.addEventListener("load", () => {
+  getPaginationNumbers();
+  setCurrentPage(1);
+  // Botones Previous y Next
+  prevButton?.addEventListener("click", () => {
+    setCurrentPage(currentPage - 1);
+  })
+  nextButton?.addEventListener("click", () => {
+    setCurrentPage(currentPage + 1);
+  })
+  // Asignar paginas a botones
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    const pageIndex = Number(button.getAttribute("page-index"));
+
+    if (pageIndex) {
+      button.addEventListener("click", () => {
+        setCurrentPage(pageIndex);
+      });
+    }
+  });
+});
