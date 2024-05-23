@@ -1,16 +1,21 @@
 ---
-import Navigation from "../components/Navigation.astro"
-import Hero from "../components/Hero.astro"
+import Navigation from "../components/Navigation.astro";
+import Hero from "../components/Hero.astro";
 ---
-
 <header>
-  <Navigation/>
-  <Hero/>
+  <Navigation />
+  <Hero />
 </header>
 <style>
-  header{
-    color: var(--white-color);    
+  header {
+    color: var(--white-color);
     margin: 25px auto;
-		max-width: 1230px;
+    max-width: 1230px;
+  }  
+  
+  @media (max-width: 1229px) {
+    header {
+      margin: 25px 20px;
+    }
   }
 </style>

@@ -1,6 +1,5 @@
 <nav>
   <a href="#"><h1>writings.dev</h1></a>
-  
   <ul>
     <li><a href="#">categories</a></li>
     <li><a href="#">articles</a></li>
@@ -12,16 +11,23 @@
     color: var(--white-color);
     text-decoration: none;
   }
-  ul{
+  ul {
     list-style: none;
     display: flex;
     flex-direction: row;
     gap: 20px;
   }
-  nav{
+  nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+  @media (max-width: 639px) {
+    nav {
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
   }
 </style>

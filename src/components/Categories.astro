@@ -2,10 +2,9 @@
 import Grid from "./logo/Grid.astro";
 import Rows from "./logo/Rows.astro";
 ---
-
 <ul>
-  <li><Grid/></li>
-  <li><Rows/></li>
+  <!-- <li><Grid/></li> -->
+  <!-- <li><Rows/></li> -->
   <li>JavaScript</li>
   <li>DevOps</li>
   <li>Cloud</li>
@@ -18,7 +17,7 @@ import Rows from "./logo/Rows.astro";
   ul{
     list-style: none;
     display: flex;
-    flex: row;
+    flex-direction: row;
     justify-content: center;    
     gap: 30px;
     font-family: "Recursive", sans-serif;
@@ -27,5 +26,17 @@ import Rows from "./logo/Rows.astro";
     font-size: 1.5rem;
     margin: 20px auto;
 		max-width: 1230px;
+    overflow: auto;
+  }
+  @media (max-width: 1229px){
+    ul{
+      flex-wrap: wrap;
+      margin: 20px 20px;
+    }
+  }  
+  @media (max-width: 639px) {
+      ul{
+        font-size: 1.4rem;
+      }
   }
 </style>

@@ -1,9 +1,12 @@
 ---
 import Card from "./Card.astro";
 import cardData from "../data/cards.json";
+import Categories from "./Categories.astro";
 ---
+
 <script src="../scripts/pagination.ts"></script>
 <section id="card-list">
+  <Categories />
   <div id="wrapper" aria-live="polite">
     {
       cardData.map((card) => {
@@ -50,7 +53,7 @@ import cardData from "../data/cards.json";
     color: var(--card-text-color);
     padding: 25px;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     justify-content: space-between;
   }
   #wrapper {
@@ -60,7 +63,7 @@ import cardData from "../data/cards.json";
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin: 0 auto;
+    margin: 75px auto 0 auto;
   }
   #wrapper::after {
     content: "";
@@ -70,7 +73,7 @@ import cardData from "../data/cards.json";
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 75px;
+    margin: 75px auto;
   }
   :global(.pagination-number),
   .pagination-button {
@@ -86,22 +89,27 @@ import cardData from "../data/cards.json";
     text-align: left;
   }
   :global(.pagination-number:hover),
-  .pagination-button:not(.disabled):hover{
+  .pagination-button:not(.disabled):hover {
     color: var(--title-color);
   }
   :global(.pagination-number.active) {
     color: var(--title-color);
     border-top: 2px solid var(--title-color);
   }
-  .pagination-button.disabled{
+  .pagination-button.disabled { 
     color: var(--hr-color);
     cursor: unset;
   }
   section {
-    margin: 100px auto;
+    margin: 10px auto;
     max-width: 1230px;
   }
   .hidden {
     display: none;
+  }
+  @media (max-width: 639px) {
+    .card {
+      margin: 0 20px;
+    }
   }
 </style>

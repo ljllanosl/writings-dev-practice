@@ -43,4 +43,20 @@ import Twitter from "../components/logo/Twitter.astro"
     margin: 25px auto 75px auto;
 		max-width: 1230px;
   }
+  @media (max-width: 1229px) {
+    footer{
+      margin: 25px 20px 75px 20px;
+    }
+  }
+  @media (max-width: 639px) {
+    footer{
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .footer-left{
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 </style>
