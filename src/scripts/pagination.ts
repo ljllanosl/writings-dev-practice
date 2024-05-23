@@ -83,9 +83,11 @@ window.addEventListener("load", () => {
   // Botones Previous y Next
   prevButton?.addEventListener("click", () => {
     setCurrentPage(currentPage - 1);
+    document.getElementById("card-list")?.scrollIntoView();
   })
   nextButton?.addEventListener("click", () => {
     setCurrentPage(currentPage + 1);
+    document.getElementById("card-list")?.scrollIntoView();
   })
   // Asignar paginas a botones
   document.querySelectorAll(".pagination-number").forEach((button) => {
@@ -94,6 +96,7 @@ window.addEventListener("load", () => {
     if (pageIndex) {
       button.addEventListener("click", () => {
         setCurrentPage(pageIndex);
+        document.getElementById("card-list")?.scrollIntoView();
       });
     }
   });

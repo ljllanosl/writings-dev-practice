@@ -3,7 +3,7 @@ import Card from "./Card.astro";
 import cardData from "../data/cards.json";
 ---
 <script src="../scripts/pagination.ts"></script>
-<section>
+<section id="card-list">
   <div id="wrapper" aria-live="polite">
     {
       cardData.map((card) => {
@@ -48,8 +48,10 @@ import cardData from "../data/cards.json";
     height: 439px;
     border-radius: 15px;
     color: var(--card-text-color);
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;   
+    justify-content: space-between;
   }
   #wrapper {
     display: flex;
