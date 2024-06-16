@@ -2,6 +2,7 @@
 import Grid from "./logo/Grid.astro";
 import Rows from "./logo/Rows.astro";
 ---
+
 <ul id="categories">
   <!-- <li><Grid/></li> -->
   <!-- <li><Rows/></li> -->
@@ -14,29 +15,29 @@ import Rows from "./logo/Rows.astro";
   <li>Explainers</li>
 </ul>
 <style>
-  ul{
+  ul {
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: center;    
+    justify-content: center;
     gap: 30px;
     font-family: "Recursive", sans-serif;
     color: var(--category-color);
     font-style: italic;
     font-size: 1.5rem;
     margin: 20px auto;
-		max-width: 1230px;
+    max-width: 1230px;
     overflow: auto;
   }
-  @media (max-width: 1229px){
-    ul{
+  @media (max-width: 1229px) {
+    ul {
       flex-wrap: wrap;
       margin: 20px 20px;
     }
-  }  
+  }
   @media (max-width: 639px) {
-      ul{
-        font-size: 1.4rem;
-      }
+    ul {
+      font-size: 1.4rem;
+    }
   }
 </style>

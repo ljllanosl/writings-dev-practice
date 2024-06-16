@@ -1,5 +1,5 @@
 ---
-export interface Props{
+export interface Props {
   title: string;
   description: string;
   category: string;
@@ -7,20 +7,19 @@ export interface Props{
   imageAlt: string;
 }
 
-const {title,description,category,imageUrl,imageAlt} = Astro.props;
-
+const { title, description, category, imageUrl, imageAlt } = Astro.props;
 ---
 
 <img src={imageUrl} alt={imageAlt} />
-  <h3>{title}</h3>
-  <p>
-    {description}
-  </p>
-  <div class="card-footer">
-    <p>May 13, 2024</p>
-    <p>{category}</p>
-  </div>
-<style>    
+<h3>{title}</h3>
+<p>
+  {description}
+</p>
+<div class="card-footer">
+  <p>May 13, 2024</p>
+  <p>{category}</p>
+</div>
+<style>
   img {
     border-radius: 15px;
     margin: 0 auto;

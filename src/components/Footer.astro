@@ -1,13 +1,21 @@
 ---
-import Twitter from "../components/logo/Twitter.astro"
+import Twitter from "../components/logo/Twitter.astro";
 ---
+
 <footer id="about">
   <div class="footer-left">
     <a href="#"><h3>writings.dev</h3></a>
-    <a href="https://twitter.com/kamrify" target="_blank" class="twitter-link"> by @kamrify </a>
+    <a href="https://twitter.com/kamrify" target="_blank" class="twitter-link">
+      by @kamrify
+    </a>
   </div>
   <div class="footer-right">
-    <a href="https://twitter.com/writingsdev"  target="_blank" class="twitter-link"><Twitter/> Follow @writingsdev </a>
+    <a
+      href="https://twitter.com/writingsdev"
+      target="_blank"
+      class="twitter-link"
+      ><Twitter /> Follow @writingsdev
+    </a>
   </div>
 </footer>
 <style>
@@ -18,10 +26,10 @@ import Twitter from "../components/logo/Twitter.astro"
     font-size: 0.9rem;
     padding: 5px;
   }
-  footer a{
+  footer a {
     text-decoration: none;
   }
-  footer a:visited{
+  footer a:visited {
     color: var(--white-color);
   }
   .footer-left {
@@ -30,7 +38,7 @@ import Twitter from "../components/logo/Twitter.astro"
     align-items: center;
     gap: 15px;
   }
-  .footer-right a{
+  .footer-right a {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -41,20 +49,20 @@ import Twitter from "../components/logo/Twitter.astro"
     justify-content: space-between;
     align-items: center;
     margin: 25px auto 75px auto;
-		max-width: 1230px;
+    max-width: 1230px;
   }
   @media (max-width: 1229px) {
-    footer{
+    footer {
       margin: 25px 20px 75px 20px;
     }
   }
   @media (max-width: 639px) {
-    footer{
+    footer {
       flex-direction: column;
       justify-content: center;
       gap: 20px;
     }
-    .footer-left{
+    .footer-left {
       flex-direction: column;
       justify-content: center;
     }
