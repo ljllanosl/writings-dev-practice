@@ -1,12 +1,4 @@
 ---
-export interface Props {
-  title: string;
-  description: string;
-  category: string;
-  imageUrl: string;
-  imageAlt: string;
-}
-
 const { title, description, category, imageUrl, imageAlt } = Astro.props;
 ---
 
@@ -17,7 +9,7 @@ const { title, description, category, imageUrl, imageAlt } = Astro.props;
 </p>
 <div class="card-footer">
   <p>May 13, 2024</p>
-  <p>{category}</p>
+  <p class="category-title">{category}</p>
 </div>
 <style>
   img {

@@ -1,14 +1,15 @@
 // Elementos del DOM
-const paginationNumbers = document.getElementById("pagination-numbers");
-const paginatedList = document.getElementById("wrapper");
-const listItems = paginatedList?.querySelectorAll(".card");
-const nextButton: HTMLElement = document.getElementById("next-button")!;
-const prevButton: HTMLElement = document.getElementById("prev-button")!;
-// Variables globales
+const nextButton = document.getElementById("next-button")!
+const prevButton = document.getElementById("prev-button")!
+const paginationNumbers = document.getElementById("pagination-numbers")
+let listItems = document.querySelectorAll(".card")
+
+// Variables
 const paginationLimit = 9;
-const pageCount = Math.ceil((listItems?.length || 9) / paginationLimit);
 let currentPage: number;
-// Añadir numeros de pagina
+let pageCount = Math.ceil((listItems?.length || 9) / paginationLimit);
+
+// Crear botones con numeros
 const appendPageNumber = (index: number) => {
   const pageNumber = document.createElement("button");
   pageNumber.className = "pagination-number";
@@ -18,7 +19,9 @@ const appendPageNumber = (index: number) => {
   paginationNumbers?.appendChild(pageNumber);
 };
 
-const getPaginationNumbers = () => {
+// Obtener paginas y asignar a botones
+export function getPaginationNumbers() {
+  pageCount = Math.ceil((document.querySelectorAll(".card")?.length || 9) / paginationLimit);
   for (let i = 1; i <= pageCount; i++) {
     appendPageNumber(i);
   }
@@ -45,6 +48,7 @@ const enableButton = (button: HTMLElement) => {
   button.removeAttribute("disabled");
 }
 
+// Habilita/Dehabilita botones Prev Next
 const handlePageButtonStatus = () => {
   if (currentPage === 1) {
     disableButton(prevButton);
@@ -69,6 +73,8 @@ const setCurrentPage = (pageNum: number) => {
   const prevRange = (pageNum - 1) * paginationLimit;
   const currRange = pageNum * paginationLimit;
 
+  listItems = document.querySelectorAll(".card")
+
   listItems?.forEach((item, index) => {
     item.classList.add("hidden");
     if (index >= prevRange && index < currRange) {
@@ -76,28 +82,46 @@ const setCurrentPage = (pageNum: number) => {
     }
   });
 };
-// Cargar funcion
-window.addEventListener("load", () => {
+
+const setCurrentPageAndScroll = (page: number) => {
+  setCurrentPage(page)
+  document.getElementById("card-list")?.scrollIntoView();
+}
+
+// Paginado  
+export function paginationStart() {
   getPaginationNumbers();
   setCurrentPage(1);
-  // Botones Previous y Next
-  prevButton?.addEventListener("click", () => {
-    setCurrentPage(currentPage - 1);
-    document.getElementById("card-list")?.scrollIntoView();
-  })
-  nextButton?.addEventListener("click", () => {
-    setCurrentPage(currentPage + 1);
-    document.getElementById("card-list")?.scrollIntoView();
-  })
+
   // Asignar paginas a botones
   document.querySelectorAll(".pagination-number").forEach((button) => {
-    const pageIndex = Number(button.getAttribute("page-index"));
+    const pageIndex = parseInt(button.getAttribute("page-index")!)
 
     if (pageIndex) {
       button.addEventListener("click", () => {
-        setCurrentPage(pageIndex);
-        document.getElementById("card-list")?.scrollIntoView();
+        setCurrentPageAndScroll(pageIndex)
       });
     }
   });
+}
+
+export function paginationRemove() {
+  prevButton.removeEventListener("click", () => {
+    setCurrentPageAndScroll(currentPage - 1)
+  })
+  nextButton.removeEventListener("click", () => {
+    setCurrentPageAndScroll(currentPage + 1)
+  })
+}
+
+// Cargar funcion al inicio
+window.addEventListener("DOMContentLoaded", () => {
+  paginationStart()
+  // Botones Previous y Next
+  prevButton.addEventListener("click", () => {
+    setCurrentPageAndScroll(currentPage - 1)
+  })
+  nextButton.addEventListener("click", () => {
+    setCurrentPageAndScroll(currentPage + 1)
+  })
 });

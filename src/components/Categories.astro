@@ -1,33 +1,71 @@
 ---
-import Grid from "./logo/Grid.astro";
-import Rows from "./logo/Rows.astro";
+const CATEGORIES = [
+  {
+    title: "JavaScript",
+    id: 1,
+  },
+  {
+    title: "DevOps",
+    id: 2,
+  },
+  {
+    title: "Cloud",
+    id: 3,
+  },
+  {
+    title: "Terraform",
+    id: 4,
+  },
+  {
+    title: "Architecture",
+    id: 5,
+  },
+  {
+    title: "Scalability",
+    id: 6,
+  },
+  {
+    title: "Explainers",
+    id: 7,
+  },
+];
 ---
 
-<ul id="categories">
-  <!-- <li><Grid/></li> -->
-  <!-- <li><Rows/></li> -->
-  <li>JavaScript</li>
-  <li>DevOps</li>
-  <li>Cloud</li>
-  <li>Terraform</li>
-  <li>Architecture</li>
-  <li>Scalability</li>
-  <li>Explainers</li>
+<ul class="categories">
+  {
+    CATEGORIES.map((category) => {
+      return (
+        <li>
+          <button class="category-button" data-category={category.title}>
+            {category.title}
+          </button>
+        </li>
+      );
+    })
+  }
 </ul>
 <style>
-  ul {
+  .categories {
     list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 30px;
+    margin: 20px auto;
+    max-width: 1230px;
+    overflow: auto;
+  }
+  .category-button {
     font-family: "Recursive", sans-serif;
     color: var(--category-color);
     font-style: italic;
     font-size: 1.5rem;
-    margin: 20px auto;
-    max-width: 1230px;
-    overflow: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .category-button:hover {
+    color: var(--title-color);
   }
   @media (max-width: 1229px) {
     ul {
