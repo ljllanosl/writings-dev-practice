@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filteredData = originalData.filter(item => {
       const categoryItem = item.querySelector('.category-title')
       return (
-        category === 'all' ||
+        category === 'All' ||
         (categoryItem as HTMLParagraphElement).innerText === category
       )
     })
