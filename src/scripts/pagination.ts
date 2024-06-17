@@ -85,7 +85,7 @@ const setCurrentPage = (pageNum: number) => {
 
 const setCurrentPageAndScroll = (page: number) => {
   setCurrentPage(page)
-  document.getElementById("card-list")?.scrollIntoView();
+  document.getElementById("articles")?.scrollIntoView();
 }
 
 // Paginado  
