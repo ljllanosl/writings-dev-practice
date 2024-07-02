@@ -7,7 +7,12 @@ const API_URL = import.meta.env.PROD
   ? 'https://writings-dev-practice.vercel.app/'
   : 'http://localhost:4321/'
 
-const response = await fetch(`${API_URL}/data.json`)
+const response = await fetch(`${API_URL}/data.json`, {
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
+})
 const data = await response.json()
 const cards: CardType[] = data.results;
 ---
