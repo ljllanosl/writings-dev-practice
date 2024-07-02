@@ -1,8 +1,11 @@
 ---
-import Card from "./Card.astro";
-import cardsData from "../data/cards.json";
-import Categories from "./Categories.astro";
-import type { ICard } from "../interfaces/ICard";
+import Card from './Card.astro'
+import Categories from './Categories.astro'
+import type { CardType } from '../types/types'
+
+const response = await fetch('http://localhost:4321/data.json')
+const data = await response.json()
+const cards: CardType[] = data.results;
 ---
 
 <script src="../scripts/pagination.ts"></script>
@@ -11,7 +14,7 @@ import type { ICard } from "../interfaces/ICard";
   <Categories />
   <ul id="dataList" aria-live="polite">
     {
-      cardsData.map((card: ICard) => {
+      cards.map((card) => {
         return (
           <li class="card">
             <Card
@@ -20,9 +23,10 @@ import type { ICard } from "../interfaces/ICard";
               category={card.category}
               imageUrl={card.imageUrl}
               imageAlt={card.imageAlt}
+              date={card.date}
             />
           </li>
-        );
+        )
       })
     }
   </ul>
