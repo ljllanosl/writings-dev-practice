@@ -1,20 +1,17 @@
 ---
 import Card from './Card.astro'
 import Categories from './Categories.astro'
-import type { CardType } from '../types/types'
+import type { CardType, Category } from '../types/types'
+import cardsJson from '../mock/data.json'
 
-const API_URL = import.meta.env.PROD
-  ? 'https://writings-dev-practice.vercel.app/'
-  : 'http://localhost:4321/'
-
-const response = await fetch(`${API_URL}/data.json`, {
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  },
-})
-const data = await response.json()
-const cards: CardType[] = data.results;
+const cards: CardType[] = cardsJson.results.map((card) => ({
+  title: card.title,
+  description: card.description,
+  category: card.category as Category,
+  date: new Date(card.date),
+  imageUrl: card.imageUrl,
+  imageAlt: card.imageAlt,
+}));
 ---
 
 <script src="../scripts/pagination.ts"></script>
