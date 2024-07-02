@@ -3,9 +3,11 @@ import Card from './Card.astro'
 import Categories from './Categories.astro'
 import type { CardType } from '../types/types'
 
-const response = await fetch('http://localhost:4321/data.json')
+const isProd = import.meta.env.PROD ? import.meta.env.SITE : 'http://localhost:4321'
+
+const response = await fetch(`${isProd}/data.json`)
 const data = await response.json()
-const cards: CardType[] = data.results;
+const cards: CardType[] = data.results
 ---
 
 <script src="../scripts/pagination.ts"></script>
