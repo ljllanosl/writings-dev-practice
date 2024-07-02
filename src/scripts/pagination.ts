@@ -114,8 +114,22 @@ export function paginationRemove() {
   })
 }
 
+const orderCardsByDate = () => {
+  const dataList = document.getElementById('dataList') as HTMLElement
+  const originalData = Array.from(listItems)
+  const sortedData = originalData.sort((a,b) => {
+    const dateA = new Date(a.querySelector(".date")?.textContent!)
+    const dateB = new Date(b.querySelector(".date")?.textContent!)
+    return dateB.getTime() - dateA.getTime()
+  })
+  dataList.innerHTML = ''
+  sortedData.forEach(item => dataList.appendChild(item))
+}
+
+
 // Cargar funcion al inicio
 window.addEventListener("DOMContentLoaded", () => {
+  orderCardsByDate()
   paginationStart()
   // Botones Previous y Next
   prevButton.addEventListener("click", () => {
